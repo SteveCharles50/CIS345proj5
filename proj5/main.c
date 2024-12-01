@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     if (out_fd < 0) exit(3);
 
     //reads data and writes to the new file
-    while (TRUE) {
+    while (true) {
         rd_count = read(in_fd, buffer, BUF_SIZE);
         if (rd_count <= 0) break;
         wt_count = write(out_fd, buffer, rd_count);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
     }
 
     //file closing mechanism
-    while (TRUE) {
+    while (true) {
         rd_count = read(in_fd, buffer, BUF_SIZE);
         if (rd_count <= 0) break;
         wt_count = write(out_fd, buffer, rd_count);

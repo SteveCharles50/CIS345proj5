@@ -1,7 +1,7 @@
-#includ <sys/types.h>
+#include <sys/types.h>
 #inlcude <fcntl.h>
 #include <stdlib.h>
-#inlcude <unistd.h>
+#include <unistd.h>
 
 
 #define BUF_SIZE 4096

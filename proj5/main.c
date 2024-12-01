@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 
 #define BUF_SIZE 4096

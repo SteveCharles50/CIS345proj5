@@ -160,7 +160,6 @@ void showMinixDirEntryl(int fd, struct minix_inode *mi){
 void showMinixDirEntry(int fd, struct minix_inode *mi){
     for(int i = 0; i < 9; i++) {
         if(mi->i_zone[i] !=0){
-            printf("%d\n", mi->i_zone[i]);
             char block[BLOCK_SIZE * 8];
             int byteSize = 1 * BLOCK_SIZE;
             lseek(fd, mi->i_zone[i] * BLOCK_SIZE, SEEK_SET);
@@ -238,8 +237,8 @@ int main(int argc, char *argv[]) {
 
         if(command != NULL && strcmp(command, "showzone") == 0){
             if(fd == -1){
-                printf("no disk mounted");
-                break;
+                printf("no disk mounted\n");
+
             }
             if(arg != NULL){
                 int test = atoi(arg);
@@ -270,8 +269,7 @@ int main(int argc, char *argv[]) {
             //reading at block 1
             int offset = 1;
             if(fd == -1){
-                printf("no disk mounted");
-                break;
+                printf("no disk mounted\n");
             }
             struct minix_super_block msb;
             printf("what\n");
@@ -288,7 +286,6 @@ int main(int argc, char *argv[]) {
             int offset = 5;
             if(fd == -1){
                 printf("no disk mounted");
-                break;
             }
             if (argv[1] != NULL && strcmp(argv[1], "-l") == 0) {
                 printf("test 3");
@@ -303,8 +300,7 @@ int main(int argc, char *argv[]) {
 
             int offset = 5;
             if(fd == -1){
-                printf("no disk mounted");
-                break;
+                printf("no disk mounted\n");
             }
             struct minix_inode mi;
             readFile(fd, offset, &mi, sizeof(struct minix_inode));
@@ -326,5 +322,4 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    exit(1);
 }

@@ -139,9 +139,11 @@ void showMinixDirEntryl(int fd, struct minix_inode *mi){
                 struct minix_dir_entry *mde = (struct minix_dir_entry *) (block + s * 16);
                 if (mde->inode != 0) {
                     if(!(strcmp(mde->name, ".")==0 || strcmp(mde->name, "..")==0)) {
+                        //int inode_start = 5 * BLOCK_SIZE;
                         printf("inode_start: %d ", inode_start);
                         printf("mde->inode: %d ", mde->inode);
-                        inode_start += 32 ;
+                        //int test = mde->inode-1;
+                        inode_start += 32;
                         struct minix_inode *mi1;
                         printf("inode_start: %d ", inode_start);
                         lseek(fd, inode_start, SEEK_SET);
@@ -196,6 +198,7 @@ void showZone(int offset, int fd) {
         struct minix_dir_entry *mde = (struct minix_dir_entry *)(block + j * 16);
         if (mde->inode != 0) {
             if (!(strcmp(mde->name, ".") == 0 || strcmp(mde->name, "..") == 0)) {
+
                 for (int i = 0; i < sizeof(mde->name); i++) {
                     if (mde->name[i] != '\0') {
                         printf("%c ", mde->name[i]);

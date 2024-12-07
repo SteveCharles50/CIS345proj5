@@ -56,12 +56,12 @@ void miniumount(int fd) {
 }
 
 void help() {
-    printf("Welcome to Minix Console!\n");
-    printf("minimount: to mount the disk image\n");
-    printf("miniumount: to unmount the disk image\n");
-    printf("traverse: to list files and directories in the root directory\n");
-    printf("traverse -l: to list detailed info regarding files and directories in the root directory\n");
-    printf("exit: to exit the program\n");
+    printf("    Welcome to Minix Console!\n");
+    printf("    minimount: to mount the disk image\n");
+    printf("    miniumount: to unmount the disk image\n");
+    printf("    traverse: to list files and directories in the root directory\n");
+    printf("    traverse -l: to list detailed info regarding files and directories in the root directory\n");
+    printf("    exit: to exit the program\n");
 }
 
 bool readFile(int fd, int offSetMult, void *ptr, size_t size) {
@@ -210,7 +210,7 @@ int main(int argc, char *argv[]) {
     int fd = -1;
 
     while (1) {
-        char input[256];
+        char input[256] = {0};
         char *command, *arg;
 
         printf("minix: ");
@@ -231,7 +231,12 @@ int main(int argc, char *argv[]) {
         }
 
         if (command != NULL && strcmp(command, "minimount") == 0) {
-            fd = minimount("imagefile.img");
+            if(arg != NULL){
+                fd = minimount(arg);
+            }
+            else{
+                printf("please pass file name\n");
+            }
         }
 
 
